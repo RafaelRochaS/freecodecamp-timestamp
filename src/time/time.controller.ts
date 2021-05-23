@@ -7,7 +7,9 @@ export class TimeController {
 
   @Get()
   default(): string {
-    return `{"unix": ${new Date().getTime()}, "utc": ${new Date().toUTCString()}}`;
+    return JSON.stringify(
+      `{"unix": ${new Date().getTime()}, "utc": ${new Date().toUTCString()}}`,
+    );
   }
 
   @Get(':date')
@@ -17,9 +19,11 @@ export class TimeController {
     }
     const dateVar = new Date(date);
     if (isNaN(dateVar.getTime())) {
-      return `{ error : "Invalid Date" }`;
+      return JSON.stringify(`{ error : "Invalid Date" }`);
     }
 
-    return `{"unix": ${dateVar.getTime()}, "utc": ${dateVar.toUTCString()}}`;
+    return JSON.stringify(
+      `{"unix": ${dateVar.getTime()}, "utc": ${dateVar.toUTCString()}}`,
+    );
   }
 }
