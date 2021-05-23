@@ -11,12 +11,15 @@ export class TimeController {
   }
 
   @Get(':date')
-  convertTime(@Param('date') date: string): string {
-    console.log(date);
-    console.log(typeof date);
-    console.log(Date.parse(date));
-    return `{"unix": ${new Date(date).getTime()}, "utc": ${new Date(
-      date,
-    ).toUTCString()}}`;
+  convertTime(@Param('date') date: any): string {
+    if (parseInt(date) > 10000) {
+      date = parseInt(date);
+    }
+    const dateVar = new Date(date);
+    if (isNaN(dateVar.getTime())) {
+      return `{ error : "Invalid Date" }`;
+    }
+
+    return `{"unix": ${dateVar.getTime()}, "utc": ${dateVar.toUTCString()}}`;
   }
 }
