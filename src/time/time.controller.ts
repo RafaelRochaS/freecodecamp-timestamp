@@ -1,14 +1,14 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { TimeService } from './time.service';
 
-@Controller('api')
+@Controller('api/timestamp')
 export class TimeController {
   constructor(private readonly timeService: TimeService) { }
 
   @Get()
   default(): any {
     return {
-      unix: `${new Date().getTime()}`,
+      unix: `${new Date().valueOf()}`,
       utc: `${new Date().toUTCString()}`,
     };
   }
@@ -19,12 +19,12 @@ export class TimeController {
       date = parseInt(date);
     }
     const dateVar = new Date(date);
-    if (isNaN(dateVar.getTime())) {
+    if (isNaN(dateVar.valueOf())) {
       return { error: 'Invalid Date' };
     }
 
     return {
-      unix: `${dateVar.getTime()}`,
+      unix: `${dateVar.valueOf()}`,
       utc: `${dateVar.toUTCString()}`,
     };
   }
