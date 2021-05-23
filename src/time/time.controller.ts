@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { TimeService } from './time.service';
 
-@Controller('api/timestamp')
+@Controller('api')
 export class TimeController {
   constructor(private readonly timeService: TimeService) { }
 
