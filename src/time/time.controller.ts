@@ -8,7 +8,7 @@ export class TimeController {
   @Get()
   default(): string {
     return JSON.stringify(
-      `{"unix": ${new Date().getTime()}, "utc": ${new Date().toUTCString()}}`,
+      `{unix: ${new Date().getTime()}, utc: ${new Date().toUTCString()}}`,
     );
   }
 
@@ -23,7 +23,7 @@ export class TimeController {
     }
 
     return JSON.stringify(
-      `{"unix": ${dateVar.getTime()}, "utc": ${dateVar.toUTCString()}}`,
+      `{unix: ${dateVar.getTime()}, utc: ${dateVar.toUTCString()}}`,
     );
   }
 }
