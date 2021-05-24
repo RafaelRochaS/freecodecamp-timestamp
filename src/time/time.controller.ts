@@ -8,8 +8,8 @@ export class TimeController {
   @Get()
   default(): any {
     return {
-      unix: `${new Date().valueOf()}`,
-      utc: `${new Date().toUTCString()}`,
+      unix: new Date().valueOf(),
+      utc: new Date().toUTCString(),
     };
   }
 
@@ -24,8 +24,8 @@ export class TimeController {
     }
 
     return {
-      unix: `${dateVar.valueOf()}`,
-      utc: `${dateVar.toUTCString()}`,
+      unix: dateVar.valueOf(),
+      utc: dateVar.toUTCString(),
     };
   }
 }
